@@ -46,8 +46,8 @@ Promise.all([tripData, destinationData, travelerData])
   if($('.user-input').val() === 'agency') {
     travelAgent = new TravelAgent(tripsData, destinationsData, travelersData);
     console.log('agent', travelAgent);
-    // managerLoginHandler();
-    $('.error-message').hide();
+    travelAgentHandler();
+    // $('.error-message').hide();
   } else {
     const loginInput = parseInt($('.user-name').val().split('traveler')[1]);
     const travelerInformation = travelersData.find(traveler => {
@@ -55,8 +55,8 @@ Promise.all([tripData, destinationData, travelerData])
     })
     travelers = new Travelers(tripsData, destinationsData, loginInput, travelerInformation);
     console.log(travelerInformation)
-    // userLoginHandler();
-    $('.error-message').hide();
+    travelerHandler();
+    // $('.error-message').hide();
 }
 }
 
@@ -69,5 +69,18 @@ const checkPassword = (event) => {
     displayError();
   }
 }
+
+const travelerHandler = () => {
+  console.log('made-it')
+}
+
+const travelAgentHandler = () => {
+  console.log('made-it')
+}
+
+const displayError = () => {
+  $('.error-message').remove('.hidden')
+}
+
 
 $('.login-button').click(checkPassword);
