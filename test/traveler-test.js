@@ -9,6 +9,7 @@ import Travelers from '../src/travelers';
 
 
 let traveler;
+let userID = 2;
 
 describe ('Travelor', () => {
 
@@ -17,7 +18,6 @@ describe ('Travelor', () => {
  });
 
 describe ('default properties', () => {
-
 
   it('should be a function', () => {
     expect(Travelers).to.be.a('function');
@@ -43,5 +43,12 @@ describe ('default properties', () => {
     expect(traveler.travelersData.travelerType).to.equal('relaxer');
   })
 
+describe.only('default properties', () => {
+
+  it('should be able to calculate the total amount spent', () => {
+    expect(traveler.getUsersTotatlSpent(userID)).to.equal(14173);
+  })
+
+})
 })
 })
