@@ -25,7 +25,6 @@ describe ('Travel Info', () => {
 describe ('trips default properties', () => {
 
   it('should have a unique id', () => {
-    console.log(travelInfo.tripsData[0])
     expect(travelInfo.tripsData[0].id).to.equal(1);
   })
 

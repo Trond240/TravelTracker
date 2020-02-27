@@ -33,5 +33,16 @@ describe ('default properties', () => {
     expect(travelAgent.travelersData.length).to.equal(10);
   })
 
+describe.only ('Travel Agent Methods', () => {
+
+  it('should be able to see all users on trips today', () => {
+    expect(travelAgent.totalUsersOnTripsToday("2020/10/04")).to.equal(5);
+  })
+
+  it('should be able to see all users on trips today', () => {
+    expect(travelAgent.retrievePendingTrips().length).to.equal(12);
+  })
+
+})
 })
 })
