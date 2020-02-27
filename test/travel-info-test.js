@@ -57,7 +57,7 @@ describe ('trips default properties', () => {
     expect(travelInfo.tripsData[0].suggestedActivities).to.deep.equal([]);
   })
 
-describe.only ('destinations default properties', () => {
+describe('destinations default properties', () => {
 
   it('should have a unique id', () => {
     expect(travelInfo.destinationsData[0].id).to.equal(1);
@@ -87,6 +87,10 @@ describe.only('Travel Info Methods', () => {
 
   it('should be able to return a list a users travel history', () => {
     expect(travelInfo.getTravelersInformation(userID).length).to.equal(5);
+  })
+
+  it('should get the destination name for a trip', () => {
+    expect(travelInfo.getDistinationName(userID).length).to.equal(5);
   })
 
 })
