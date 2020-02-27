@@ -7,6 +7,7 @@ import TravelInfo from '../src/travel-info.js';
 
 
 let travelInfo;
+let userID = 2;
 
 describe ('Travel Info', () => {
 
@@ -81,7 +82,14 @@ describe.only ('destinations default properties', () => {
   it('should have a alt tag', () => {
     expect(travelInfo.destinationsData[0].alt).to.equal('overview of city buildings with a clear sky');
   })
-  
+
+describe.only('Travel Info Methods', () => {
+
+  it('should be able to return a list a users travel history', () => {
+    expect(travelInfo.getTravelersInformation(userID).length).to.equal(5);
+  })
+
+})
 })
 })
 })
