@@ -1,4 +1,4 @@
-const travelorsData: [
+const travelorsData = [
   {
   "id": 1,
   "name": "Ham Leadbeater",
