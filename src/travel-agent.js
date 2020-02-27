@@ -22,8 +22,8 @@ class TravelAgent extends TravelInfo {
   }
 
   totalRevenueThisYear() {
+    //need to pass in a date
     let totalCount = this.getAllUserTotalSpent();
-
     return totalCount * .01
     // return this.tripsData.
   }
