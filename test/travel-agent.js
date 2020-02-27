@@ -43,6 +43,14 @@ describe.only ('Travel Agent Methods', () => {
     expect(travelAgent.retrievePendingTrips().length).to.equal(12);
   })
 
+  it('should calculate total spent this year', () => {
+    expect(travelAgent.getAllUserTotalSpent()).to.equal(1135278);
+  })
+
+  it('should calculate total spent this year', () => {
+    expect(travelAgent.totalRevenueThisYear()).to.equal(11352.78);
+  })
+
 })
 })
 })

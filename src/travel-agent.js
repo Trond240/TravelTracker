@@ -20,6 +20,26 @@ class TravelAgent extends TravelInfo {
       return trip.status === 'pending';
     })
   }
+
+  totalRevenueThisYear() {
+    let totalCount = this.getAllUserTotalSpent();
+
+    return totalCount * .01
+    // return this.tripsData.
+  }
+
+  getAllUserTotalSpent() {
+
+    return this.tripsData.reduce((counter, trip) => {
+      this.destinationsData.forEach(destination => {
+        if(trip.destinationID === destination.id) {
+          counter += destination.estimatedLodgingCostPerDay * trip.duration
+          counter += destination.estimatedFlightCostPerPerson * trip.travelers
+        }
+      })
+      return counter
+    }, 0)
+  }
 }
 
 export default TravelAgent;
