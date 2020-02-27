@@ -1,15 +1,21 @@
 const chai = require("chai");
 const expect = chai.expect;
+
+import destinationsData from '../data/destinations-test-data';
+import tripsData from '../data/trips-test-data';
 import travelersData from '../data/travelers-test-data';
+import TravelInfo from '../src/travel-info.js';
 import TravelAgent from '../src/travel-agent';
+
 
 
 let travelAgent;
 
-describe.only ('Travel Agent', () => {
+
+describe ('Travel Agent', () => {
 
  beforeEach(() => {
-   travelAgent = new TravelAgent(travelersData)
+   travelAgent = new TravelAgent(tripsData, destinationsData, travelersData)
 });
 
 describe ('default properties', () => {

@@ -1,13 +1,41 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you import jQuery into a JS file if you use jQuery in that file
-import $ from 'jquery';
-
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
+import TravelInfo from '../src/travel-info.js';
+import TravelAgent from '../src/travel-agent';
+import Travelers from '../src/travelers';
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
 
-console.log('This is the JavaScript entry file - your code begins here.');
+let travelInfo;
+let travelers;
+let travelAgent;
+let tripsData;
+let destinationsData;
+let travelersData;
+
+
+const travelerData = fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/travelers/travelers')
+  .then(travelersResponse => travelersResponse.json())
+  .then(data => data.travelers)
+  .catch(error => console.log('usersData error'));
+
+const destinationData = fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/destinations/destinations')
+  .then(destinationsResponse => destinationsResponse.json())
+  .then(data => data.destinations)
+  .catch(error => console.log('roomsData error'));
+
+const tripData = fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/trips/trips')
+  .then(tripsResponse => tripsResponse.json())
+  .then(data => data.trips)
+  .catch(error => console.log('bookingsData error'));
+
+Promise.all([tripData, destinationData, travelerData])
+  .then(data => {
+    tripsData = data[0];
+    destinationsData = data[1];
+    travelersData = data[2];
+  })
+  .then(() => {
+    travelInfo = new TravelInfo(tripsData, destinationsData);
+    console.log(travelInfo)
+
+  })
+  .catch(error => {console.log('Something is amiss with promise all', error)});

@@ -3,7 +3,7 @@ const expect = chai.expect;
 import destinationsData from '../data/destinations-test-data';
 import tripsData from '../data/trips-test-data';
 
-import TravelelInfo from '../src/travel-info.js';
+import TravelInfo from '../src/travel-info.js';
 
 
 let travelInfo;
@@ -11,7 +11,7 @@ let travelInfo;
 describe ('Travel Info', () => {
 
  beforeEach(() => {
-   travelerInfo = new TravelInfo(tripsData, destinationsData)
+   travelInfo = new TravelInfo(tripsData, destinationsData)
  });
 
 describe ('default properties', () => {
