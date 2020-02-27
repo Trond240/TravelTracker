@@ -25,7 +25,6 @@ describe ('Travel Info', () => {
 describe ('trips default properties', () => {
 
   it('should have a unique id', () => {
-    console.log(travelInfo.tripsData[0])
     expect(travelInfo.tripsData[0].id).to.equal(1);
   })
 
@@ -86,11 +85,11 @@ describe('destinations default properties', () => {
 describe.only('Travel Info Methods', () => {
 
   it('should be able to return a list a users travel history', () => {
-    expect(travelInfo.getTravelersInformation(userID).length).to.equal(5);
+    expect(travelInfo.getTravelersInformation(userID).length).to.equal(6);
   })
 
   it('should get the destination name for a trip', () => {
-    expect(travelInfo.getDistinationName(userID).length).to.equal(5);
+    expect(travelInfo.getDistinationName(userID).length).to.equal(6);
   })
 
 })
