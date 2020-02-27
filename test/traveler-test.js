@@ -1,7 +1,10 @@
 const chai = require("chai");
 const expect = chai.expect;
-import travelersData from '../data/travelers-test-data';
 
+import destinationsData from '../data/destinations-test-data';
+import tripsData from '../data/trips-test-data';
+import travelersData from '../data/travelers-test-data';
+import TravelInfo from '../src/travel-info.js';
 import Travelers from '../src/travelers';
 
 
@@ -10,7 +13,7 @@ let traveler;
 describe ('Travelor', () => {
 
  beforeEach(() => {
-   traveler = new Travelers(travelersData[0])
+   traveler = new Travelers(tripsData, destinationsData, travelersData[0])
  });
 
 describe ('default properties', () => {
