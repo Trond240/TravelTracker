@@ -21,7 +21,7 @@ describe ('Travel Info', () => {
   it('should be an instance of a UserName', () => {
     expect(travelInfo).to.be.an.instanceof(TravelInfo);
   })
-describe.only ('trips default properties', () => {
+describe ('trips default properties', () => {
 
   it('should have a unique id', () => {
     console.log(travelInfo.tripsData[0])
@@ -56,5 +56,32 @@ describe.only ('trips default properties', () => {
     expect(travelInfo.tripsData[0].suggestedActivities).to.deep.equal([]);
   })
 
+describe.only ('destinations default properties', () => {
+
+  it('should have a unique id', () => {
+    expect(travelInfo.destinationsData[0].id).to.equal(1);
+  })
+
+  it('should have a travel destination', () => {
+    expect(travelInfo.destinationsData[0].destination).to.equal('Lima, Peru');
+  })
+
+  it('should have a estimated Lodging Cost Per Day', () => {
+    expect(travelInfo.destinationsData[0].estimatedLodgingCostPerDay).to.equal(70);
+  })
+
+  it('should have a estimated Flight Cost Per Person', () => {
+    expect(travelInfo.destinationsData[0].estimatedFlightCostPerPerson).to.equal(400);
+  })
+
+  it('should have a image', () => {
+    expect(travelInfo.destinationsData[0].image).to.equal('https://images.unsplash.com/photo-1489171084589-9b5031ebcf9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80');
+  })
+
+  it('should have a alt tag', () => {
+    expect(travelInfo.destinationsData[0].alt).to.equal('overview of city buildings with a clear sky');
+  })
+  
+})
 })
 })
