@@ -1,4 +1,5 @@
 import './css/base.scss';
+import $ from 'jquery';
 import TravelInfo from '../src/travel-info.js';
 import TravelAgent from '../src/travel-agent';
 import Travelers from '../src/travelers';
@@ -39,3 +40,34 @@ Promise.all([tripData, destinationData, travelerData])
 
   })
   .catch(error => {console.log('Something is amiss with promise all', error)});
+
+
+  const generateUser = () => {
+  if($('.user-input').val() === 'agency') {
+    travelAgent = new TravelAgent(tripsData, destinationsData, travelersData);
+    console.log('agent', travelAgent);
+    // managerLoginHandler();
+    $('.error-message').hide();
+  } else {
+    const loginInput = parseInt($('.user-name').val().split('traveler')[1]);
+    const travelerInformation = travelersData.find(traveler => {
+      return traveler.id === loginInput;
+    })
+    travelers = new Travelers(tripsData, destinationsData, loginInput, travelerInformation);
+    console.log(travelerInformation)
+    // userLoginHandler();
+    $('.error-message').hide();
+}
+}
+
+const checkPassword = (event) => {
+  event.preventDefault();
+  if($(".user-name").val() &&
+  $(".user-password").val() === 'travel2020') {
+    generateUser();
+  } else {
+    displayError();
+  }
+}
+
+$('.login-button').click(checkPassword);
