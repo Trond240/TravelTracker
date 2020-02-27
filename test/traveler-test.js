@@ -43,10 +43,10 @@ describe ('default properties', () => {
     expect(traveler.travelersData.travelerType).to.equal('relaxer');
   })
 
-describe('default properties', () => {
+describe.only('default properties', () => {
 
   it('should be able to calculate the total amount spent', () => {
-    expect(traveler.getUsersTotatlSpent(userID)).to.equal(14173);
+    expect(traveler.getUsersTotatlSpent(userID)).to.equal(25739);
   })
 
 })
