@@ -12,7 +12,7 @@ class Travelers extends TravelInfo {
       return foundTrips.reduce((counter, trips) => {
       counter += trips['Flight Per Person'] * trips['Number of Travelers'];
       counter += trips['Cost Per Person A Day'] * trips['Number of Travelers'];
-      return counter
+      return counter;
     }, 0)
   }
 }
