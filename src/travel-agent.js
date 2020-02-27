@@ -1,6 +1,6 @@
 class TravelAgent {
-  constructor(travelorsData) {
-    this.travelorsData = travelorsData;
+  constructor(travelersData) {
+    this.travelersData = travelersData;
   }
 }
 
