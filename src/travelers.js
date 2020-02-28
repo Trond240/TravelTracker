@@ -12,8 +12,8 @@ class Travelers extends TravelInfo {
     console.log(foundTrips)
 
       return foundTrips.reduce((counter, trips) => {
-      counter += trips['Flight Per Person'] * trips['Number of Travelers'];
-      counter += trips['Cost Per Person A Day'] * trips['Duration'];
+      counter += trips.flightPerPerson * trips.numberOfTravelers;
+      counter += trips.costPerPersonADay * trips.duration;
       return counter;
     }, 0)
   }
