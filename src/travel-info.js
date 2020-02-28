@@ -19,7 +19,7 @@ class TravelInfo {
     return findDestinationName.reduce((newList, trip) => {
       this.destinationsData.forEach(destination => {
         if(trip.destination === destination.id) {
-          newList.push({destination: destination.destination, 'Flight Per Person': destination.estimatedFlightCostPerPerson, 'Cost Per Person A Day': destination.estimatedLodgingCostPerDay, 'Number of Travelers': trip.travelers, date: trip.date, "Duration": trip.duration})
+          newList.push({destination: destination.destination, flightPerPerson: destination.estimatedFlightCostPerPerson, costPerPersonADay: destination.estimatedLodgingCostPerDay, numberOfTravelers: trip.travelers, date: trip.date, duration: trip.duration})
         }
       })
       return newList;
