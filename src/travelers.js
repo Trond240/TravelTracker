@@ -1,9 +1,10 @@
 import TravelInfo from '../src/travel-info.js';
 
 class Travelers extends TravelInfo {
-  constructor(tripsData, destinationsData, travelersData) {
+  constructor(tripsData, destinationsData, travelersData, name) {
     super(tripsData, destinationsData)
     this.travelersData = travelersData;
+    this.name = name;
   }
 
   getUsersTotatlSpent(userID) {

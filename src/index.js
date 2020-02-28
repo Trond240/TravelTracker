@@ -1,5 +1,6 @@
 import './css/base.scss';
 import $ from 'jquery';
+import {domUpdates} from '../src/domUpdates.js'
 import TravelInfo from '../src/travel-info.js';
 import TravelAgent from '../src/travel-agent';
 import Travelers from '../src/travelers';
@@ -50,11 +51,8 @@ Promise.all([tripData, destinationData, travelerData])
     // $('.error-message').hide();
   } else {
     const loginInput = parseInt($('.user-name').val().split('traveler')[1]);
-    const travelerInformation = travelersData.find(traveler => {
-      return traveler.id === loginInput;
-    })
-    travelers = new Travelers(tripsData, destinationsData, loginInput, travelerInformation);
-    console.log(travelerInformation)
+    const travelerInformation = travelersData.find(traveler => traveler.id === loginInput)
+    travelers = new Travelers(tripsData, destinationsData, loginInput, travelerInformation.name);
     travelerHandler();
     // $('.error-message').hide();
 }
@@ -71,11 +69,17 @@ const checkPassword = (event) => {
 }
 
 const travelerHandler = () => {
-  console.log('made-it')
+  $('.welcome').addClass('hidden');
+  $('.user-page').removeClass('hidden');
+  domUpdates.displayUserInformation(travelers.name, travelers.getUsersTotatlSpent(travelers.travelersData))
+  domUpdates.displayAllTrips(travelInfo.destinationsData)
+  domUpdates.displayUsersPastAndPresent(travelers.getDistinationName(travelers.travelersData))
 }
 
 const travelAgentHandler = () => {
   console.log('made-it')
+  $('.welcome').addClass('hidden');
+    $('.manager-page').removeClass('hidden');
 }
 
 const displayError = () => {

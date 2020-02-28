@@ -82,7 +82,7 @@ describe('destinations default properties', () => {
     expect(travelInfo.destinationsData[0].alt).to.equal('overview of city buildings with a clear sky');
   })
 
-describe.only('Travel Info Methods', () => {
+describe('Travel Info Methods', () => {
 
   it('should be able to return a list a users travel history', () => {
     expect(travelInfo.getTravelersInformation(userID).length).to.equal(6);

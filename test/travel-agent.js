@@ -33,7 +33,11 @@ describe ('default properties', () => {
     expect(travelAgent.travelersData.length).to.equal(10);
   })
 
-describe ('Travel Agent Methods', () => {
+describe.only ('Travel Agent Methods', () => {
+
+  it('should be able to see all users on trips today', () => {
+    expect(travelAgent.searchUserByName("Tiffy Grout").length).to.equal(1);
+  })
 
   it('should be able to see all users on trips today', () => {
     expect(travelAgent.totalUsersOnTripsToday("2020/10/04")).to.equal(5);

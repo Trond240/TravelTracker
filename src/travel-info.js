@@ -6,7 +6,6 @@ class TravelInfo {
 
   getTravelersInformation(userID) {
     return this.tripsData.reduce((tripsList, trips) => {
-      console.log(trips)
       if(userID === trips.userID) {
         tripsList.push({destination: trips.destinationID, travelers: trips.travelers, date: trips.date, duration: trips.duration})
       }
@@ -15,6 +14,7 @@ class TravelInfo {
   }
 
   getDistinationName(userID) {
+    console.log(this.destinationsData[0])
     let findDestinationName = this.getTravelersInformation(userID);
     return findDestinationName.reduce((newList, trip) => {
       this.destinationsData.forEach(destination => {

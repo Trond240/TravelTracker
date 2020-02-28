@@ -6,6 +6,12 @@ class TravelAgent extends TravelInfo {
     this.travelersData = travelersData;
   }
 
+  searchUserByName(name) {
+    return this.travelersData.filter(user => {
+      return user.name === name;
+    })
+  }
+
   totalUsersOnTripsToday(date) {
     return this.tripsData.reduce((counter, trips) =>  {
       if(trips.date === date) {
@@ -25,7 +31,6 @@ class TravelAgent extends TravelInfo {
     //need to pass in a date
     let totalCount = this.getAllUserTotalSpent();
     return totalCount * .01
-    // return this.tripsData.
   }
 
   getAllUserTotalSpent() {
