@@ -15,12 +15,13 @@ export const domUpdates = {
 
  displayUsersPastAndPresent(travelHistory) {
    return travelHistory.forEach(trip => {
+     console.log(trip)
      $('.past-and-present').append(
        `<div class='all-trips'>
          <p>Destination: ${trip.destination}</p>
-         <p>Flight Cost Per Person: ${trip.estimatedFlightCostPerPerson}</p>
-         <p>Estimated Cost For Lodge: ${trip.stimatedLodgingCostPerDay}</p>
-         <p>Number of Travelers: ${trip.travelers}</p>
+         <p>Flight Cost Per Person: $${trip.flightPerPerson}.00</p>
+         <p>Estimated Cost For Lodge: $${trip.costPerPersonADay}.00</p>
+         <p>Number of Travelers: ${trip.numberOfTravelers}</p>
          <p>Date: ${trip.date}</p>
        </div>
        `)
@@ -32,7 +33,7 @@ export const domUpdates = {
      $('.trips').append(
        `<div class='vacation-card'>
        <h1>Destination:${trip.destination}</h1>
-       <image src='${trip.image}' alt='click to view recipe for ${trip.alt}'>
+       <image class='destination-image' src='${trip.image}' alt='click to view recipe for ${trip.alt}'>
        <p>Estimated Cost Per Day: $${trip.estimatedLodgingCostPerDay}.00</p>
        <p>Estimated Flight Cost Per Person: $${trip.estimatedFlightCostPerPerson}.00</p>
        </div>
