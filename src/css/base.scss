@@ -64,6 +64,7 @@ body {
 
 .all-trips {
   margin-top: 10px;
+  margin-left: 5%;
   background-color: white;
   color: $primary-color;
   border: 5px solid $third-color;
@@ -74,6 +75,17 @@ body {
 .trips {
   width: 75%;
   display: flex;
+  flex-flow: row wrap;
+  overflow: scroll;
+  height: 800px;
+  border: 5px solid $primary-color;
+  border-radius: 4px;
+  background-color: $second-color;
+}
+
+.past-and-present {
+  // display: flex;
+  width: 15%;
   flex-flow: row wrap;
   overflow: scroll;
   height: 800px;

@@ -23,6 +23,7 @@ class TravelAgent extends TravelInfo {
 
   retrievePendingTrips() {
     return this.tripsData.filter(trip => {
+      console.log(trip)
       return trip.status === 'pending';
     })
   }

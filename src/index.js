@@ -13,6 +13,14 @@ let tripsData;
 let destinationsData;
 let travelersData;
 
+let today = new Date();
+let dd = String(today.getDate()).padStart(2, '0');
+let mm = String(today.getMonth() + 1).padStart(2, '0');
+let yyyy = today.getFullYear();
+
+today = yyyy + '/' + mm + '/' + dd;
+document.write(today);
+
 
 const travelerData = fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/travelers/travelers')
   .then(travelersResponse => travelersResponse.json())
@@ -70,6 +78,8 @@ const checkPassword = (event) => {
 
 const travelerHandler = () => {
   $('.welcome').addClass('hidden');
+  $('.trips').removeClass('hidden');
+  $('.past-and-present').removeClass('hidden');
   $('.user-page').removeClass('hidden');
   domUpdates.displayUserInformation(travelers.name, travelers.getUsersTotatlSpent(travelers.travelersData))
   domUpdates.displayAllTrips(travelInfo.destinationsData)
@@ -79,7 +89,9 @@ const travelerHandler = () => {
 const travelAgentHandler = () => {
   console.log('made-it')
   $('.welcome').addClass('hidden');
-    $('.manager-page').removeClass('hidden');
+  // $('.trips').addClass('hidden');
+  $('.manager-page').removeClass('hidden');
+  domUpdates.displayManagerInfo(travelAgent.totalUsersOnTripsToday(today), travelAgent.totalRevenueThisYear());
 }
 
 const displayError = () => {
