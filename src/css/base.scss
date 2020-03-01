@@ -62,7 +62,7 @@ body {
   justify-content: center;
 }
 
-.all-trips {
+.all-trips, .user-pending-trips, .users-trips {
   margin-top: 10px;
   margin-left: 5%;
   background-color: white;
@@ -72,7 +72,14 @@ body {
   border-radius: 4px;
 }
 
-.trips {
+.user-pending-trips {
+  width: 15%;
+  overflow: scroll;
+  background-color: $second-color;
+  border: 5px solid $third-color;
+}
+
+.trips, .manager-trips {
   width: 75%;
   display: flex;
   flex-flow: row wrap;
@@ -114,9 +121,10 @@ body {
   border: 5px solid $third-color;
 }
 
-.user-options {
+.user-options, .manager-options {
   display: flex;
   justify-content: space-between;
+  margin-top: 20px;
 }
 
 .hidden {
