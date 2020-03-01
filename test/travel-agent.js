@@ -33,10 +33,14 @@ describe ('default properties', () => {
     expect(travelAgent.travelersData.length).to.equal(10);
   })
 
-describe.only ('Travel Agent Methods', () => {
+describe ('Travel Agent Methods', () => {
 
-  it('should be able to see all users on trips today', () => {
-    expect(travelAgent.searchUserByName("Tiffy Grout").length).to.equal(1);
+  it('should be able to search a user by name', () => {
+    expect(travelAgent.searchUserByNameHelper("Tiffy Grout").length).to.equal(1);
+  })
+
+  it.only('should be able to see a users trips inforamtion', () => {
+    expect(travelAgent.getUserTripInformation("Rachael Vaughten").length).to.equal(1);
   })
 
   it('should be able to see all users on trips today', () => {
@@ -51,7 +55,7 @@ describe.only ('Travel Agent Methods', () => {
     expect(travelAgent.getAllUserTotalSpent()).to.equal(1135278);
   })
 
-  it('should calculate total spent this year', () => {
+  it('should calculate 10% of the total spent this year', () => {
     expect(travelAgent.totalRevenueThisYear()).to.equal(11352.78);
   })
 
