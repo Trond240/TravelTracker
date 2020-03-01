@@ -6,9 +6,22 @@ class TravelAgent extends TravelInfo {
     this.travelersData = travelersData;
   }
 
-  searchUserByName(name) {
-    return this.travelersData.filter(user => {
+  searchUserByNameHelper(name) {
+    let foundUser = this.travelersData.find(user => {
       return user.name === name;
+    })
+    return foundUser
+  }
+
+  getUserTripInformation(name) {
+    let helper = this.searchUserByNameHelper(name);
+
+    let foundTripInfo = this.tripsData.filter(trip => {
+      return trip.userID === helper.id && trip.status === 'pending';
+    })
+
+    return foundTripInfo.map(trip => {
+      return ({name: helper.name, tripID: trip.id, tripDate: trip.date, status: trip.status})
     })
   }
 
@@ -35,7 +48,6 @@ class TravelAgent extends TravelInfo {
   }
 
   getAllUserTotalSpent() {
-
     return this.tripsData.reduce((counter, trip) => {
       this.destinationsData.forEach(destination => {
         if(trip.destinationID === destination.id) {
