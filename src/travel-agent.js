@@ -6,6 +6,25 @@ class TravelAgent extends TravelInfo {
     this.travelersData = travelersData;
   }
 
+  searchUserByNameHelper(name) {
+    let foundUser = this.travelersData.find(user => {
+      return user.name === name;
+    })
+    return foundUser
+  }
+
+  getUserTripInformation(name) {
+    let helper = this.searchUserByNameHelper(name);
+
+    let foundTripInfo = this.tripsData.filter(trip => {
+      return trip.userID === helper.id && trip.status === 'pending';
+    })
+
+    return foundTripInfo.map(trip => {
+      return ({name: helper.name, tripID: trip.id, tripDate: trip.date, status: trip.status})
+    })
+  }
+
   totalUsersOnTripsToday(date) {
     return this.tripsData.reduce((counter, trips) =>  {
       if(trips.date === date) {
@@ -17,6 +36,7 @@ class TravelAgent extends TravelInfo {
 
   retrievePendingTrips() {
     return this.tripsData.filter(trip => {
+      console.log(trip)
       return trip.status === 'pending';
     })
   }
@@ -25,11 +45,9 @@ class TravelAgent extends TravelInfo {
     //need to pass in a date
     let totalCount = this.getAllUserTotalSpent();
     return totalCount * .01
-    // return this.tripsData.
   }
 
   getAllUserTotalSpent() {
-
     return this.tripsData.reduce((counter, trip) => {
       this.destinationsData.forEach(destination => {
         if(trip.destinationID === destination.id) {

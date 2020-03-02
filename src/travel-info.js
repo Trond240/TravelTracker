@@ -6,7 +6,6 @@ class TravelInfo {
 
   getTravelersInformation(userID) {
     return this.tripsData.reduce((tripsList, trips) => {
-      console.log(trips)
       if(userID === trips.userID) {
         tripsList.push({destination: trips.destinationID, travelers: trips.travelers, date: trips.date, duration: trips.duration})
       }
@@ -15,11 +14,12 @@ class TravelInfo {
   }
 
   getDistinationName(userID) {
+    console.log(this.destinationsData[0])
     let findDestinationName = this.getTravelersInformation(userID);
     return findDestinationName.reduce((newList, trip) => {
       this.destinationsData.forEach(destination => {
         if(trip.destination === destination.id) {
-          newList.push({destination: destination.destination, 'Flight Per Person': destination.estimatedFlightCostPerPerson, 'Cost Per Person A Day': destination.estimatedLodgingCostPerDay, 'Number of Travelers': trip.travelers, date: trip.date, "Duration": trip.duration})
+          newList.push({destination: destination.destination, flightPerPerson: destination.estimatedFlightCostPerPerson, costPerPersonADay: destination.estimatedLodgingCostPerDay, numberOfTravelers: trip.travelers, date: trip.date, duration: trip.duration})
         }
       })
       return newList;

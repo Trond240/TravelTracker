@@ -1,5 +1,6 @@
 import './css/base.scss';
 import $ from 'jquery';
+import {domUpdates} from '../src/domUpdates.js'
 import TravelInfo from '../src/travel-info.js';
 import TravelAgent from '../src/travel-agent';
 import Travelers from '../src/travelers';
@@ -11,6 +12,14 @@ let travelAgent;
 let tripsData;
 let destinationsData;
 let travelersData;
+let searchValue = $('.search-user');
+let today = new Date();
+let dd = String(today.getDate()).padStart(2, '0');
+let mm = String(today.getMonth() + 1).padStart(2, '0');
+let yyyy = today.getFullYear();
+
+today = yyyy + '/' + mm + '/' + dd;
+document.write(today);
 
 
 const travelerData = fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/travelers/travelers')
@@ -50,11 +59,8 @@ Promise.all([tripData, destinationData, travelerData])
     // $('.error-message').hide();
   } else {
     const loginInput = parseInt($('.user-name').val().split('traveler')[1]);
-    const travelerInformation = travelersData.find(traveler => {
-      return traveler.id === loginInput;
-    })
-    travelers = new Travelers(tripsData, destinationsData, loginInput, travelerInformation);
-    console.log(travelerInformation)
+    const travelerInformation = travelersData.find(traveler => traveler.id === loginInput)
+    travelers = new Travelers(tripsData, destinationsData, loginInput, travelerInformation.name);
     travelerHandler();
     // $('.error-message').hide();
 }
@@ -71,11 +77,30 @@ const checkPassword = (event) => {
 }
 
 const travelerHandler = () => {
-  console.log('made-it')
+  $('.welcome').addClass('hidden');
+  $('.trips').removeClass('hidden');
+  $('.past-and-present').removeClass('hidden');
+  $('.user-page').removeClass('hidden');
+  domUpdates.displayUserInformation(travelers.name, travelers.getUsersTotatlSpent(travelers.travelersData));
+  domUpdates.displayAllTrips(travelInfo.destinationsData);
+  domUpdates.displayUsersPastAndPresent(travelers.getDistinationName(travelers.travelersData));
 }
 
 const travelAgentHandler = () => {
-  console.log('made-it')
+  console.log(travelAgent)
+
+  $('.welcome').addClass('hidden');
+  $('.manager-trips').removeClass('hidden');
+  $('.manager-page').removeClass('hidden');
+  $('.agent-display').removeClass('hidden');
+  domUpdates.displayManagerInfo(travelAgent.totalUsersOnTripsToday(today), travelAgent.totalRevenueThisYear());
+  domUpdates.displayManagerTrips(travelInfo.destinationsData);
+}
+
+const searchUserHandler = (event) => {
+  console.log(travelAgent)
+  // console.log(travelAgent.getUserTripInformation(searchValue.val()))
+  domUpdates.displayUserTripInfo(travelAgent.getUserTripInformation(searchValue.val()));
 }
 
 const displayError = () => {
@@ -84,3 +109,4 @@ const displayError = () => {
 
 
 $('.login-button').click(checkPassword);
+$('.user-search-button').click(searchUserHandler);
