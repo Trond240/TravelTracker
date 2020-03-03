@@ -14,7 +14,6 @@ class TravelInfo {
   }
 
   getDistinationName(userID) {
-    console.log(this.destinationsData[0])
     let findDestinationName = this.getTravelersInformation(userID);
     return findDestinationName.reduce((newList, trip) => {
       this.destinationsData.forEach(destination => {

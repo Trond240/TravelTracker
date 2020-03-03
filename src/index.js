@@ -12,11 +12,14 @@ let travelAgent;
 let tripsData;
 let destinationsData;
 let travelersData;
+let bookMeButton = $('.card-image');
 let searchValue = $('.search-user');
+let searchDestinationValue = $('.search-for-trip')
 let today = new Date();
 let dd = String(today.getDate()).padStart(2, '0');
 let mm = String(today.getMonth() + 1).padStart(2, '0');
 let yyyy = today.getFullYear();
+
 
 today = yyyy + '/' + mm + '/' + dd;
 document.write(today);
@@ -45,8 +48,6 @@ Promise.all([tripData, destinationData, travelerData])
   })
   .then(() => {
     travelInfo = new TravelInfo(tripsData, destinationsData);
-    console.log(travelInfo)
-
   })
   .catch(error => {console.log('Something is amiss with promise all', error)});
 
@@ -54,7 +55,6 @@ Promise.all([tripData, destinationData, travelerData])
   const generateUser = () => {
   if($('.user-input').val() === 'agency') {
     travelAgent = new TravelAgent(tripsData, destinationsData, travelersData);
-    console.log('agent', travelAgent);
     travelAgentHandler();
     // $('.error-message').hide();
   } else {
@@ -81,32 +81,52 @@ const travelerHandler = () => {
   $('.trips').removeClass('hidden');
   $('.past-and-present').removeClass('hidden');
   $('.user-page').removeClass('hidden');
+  $('.new-trip-form').removeClass('hidden');
   domUpdates.displayUserInformation(travelers.name, travelers.getUsersTotatlSpent(travelers.travelersData));
   domUpdates.displayAllTrips(travelInfo.destinationsData);
   domUpdates.displayUsersPastAndPresent(travelers.getDistinationName(travelers.travelersData));
 }
 
 const travelAgentHandler = () => {
-  console.log(travelAgent)
-
   $('.welcome').addClass('hidden');
   $('.manager-trips').removeClass('hidden');
   $('.manager-page').removeClass('hidden');
   $('.agent-display').removeClass('hidden');
-  domUpdates.displayManagerInfo(travelAgent.totalUsersOnTripsToday(today), travelAgent.totalRevenueThisYear());
+  domUpdates.displayManagerInfo(travelAgent.totalUsersOnTripsToday("2020/10/04"), travelAgent.totalRevenueThisYear());
   domUpdates.displayManagerTrips(travelInfo.destinationsData);
 }
 
 const searchUserHandler = (event) => {
-  console.log(travelAgent)
-  // console.log(travelAgent.getUserTripInformation(searchValue.val()))
   domUpdates.displayUserTripInfo(travelAgent.getUserTripInformation(searchValue.val()));
+}
+
+const searchDestinationHandler = (event) => {
+  event.preventDefault();
+  domUpdates.displaySingleTripInfo(travelers.searchDistinationByName(searchDestinationValue.val()))
+}
+
+const bookTripHandler = (event) => {
+  event.preventDefault();
+  let foundTrip = travelers.searchDistinationByName(searchDestinationValue.val())
+  let newId = 300025;
+  let numberOfDays = $('.duration').val();
+  let numberOfTravelers = $('.number-of-travelers').val();
+
+  travelers.bookNewTrip(newId, travelers.travelersData, foundTrip.id, numberOfDays, today, numberOfTravelers, 'pending', [])
+}
+
+const totalHandler = (event) => {
+  event.preventDefault();
+  console.log('made-it')
+  domUpdates.totalCostDisplay(trevelers.getUsersTotatlSpent(travelers.travelersData))
 }
 
 const displayError = () => {
   $('.error-message').remove('.hidden')
 }
 
-
+$('#confirm').click(totalHandler);
+$('#bookMe').click(bookTripHandler);
+$('.destination-search-button').click(searchDestinationHandler)
 $('.login-button').click(checkPassword);
 $('.user-search-button').click(searchUserHandler);

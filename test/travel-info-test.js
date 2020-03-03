@@ -91,7 +91,7 @@ describe('Travel Info Methods', () => {
   it('should get the destination name for a trip', () => {
     expect(travelInfo.getDistinationName(userID).length).to.equal(6);
   })
-
+  
 })
 })
 })
