@@ -14,7 +14,7 @@ export const domUpdates = {
  },
 
  displayUsersPastAndPresent(travelHistory) {
-   return travelHistory.forEach(trip => {
+   travelHistory.map(trip => {
      $('.past-and-present').append(
        `<div class='all-trips'>
          <p>Destination: ${trip.destination}</p>
@@ -28,9 +28,7 @@ export const domUpdates = {
  },
 
  displayUserTripInfo(foundInfo) {
-   console.log(foundInfo)
-   return foundInfo.forEach(trip => {
-     console.log(trip)
+   foundInfo.map(trip => {
      $('.user-pending-trips').append(
        `<div class='users-trips'>
          <p>User: ${trip.name}</p>
@@ -44,7 +42,7 @@ export const domUpdates = {
  },
 
  displayManagerTrips(tripsData) {
-   return tripsData.forEach(trip => {
+   tripsData.map(trip => {
      $('.manager-trips').append(
        `<div class='vacation-card'>
        <h1>Destination:${trip.destination}</h1>
@@ -59,11 +57,11 @@ export const domUpdates = {
  },
 
  displayAllTrips(tripsData) {
-   return tripsData.forEach(trip => {
-     $('.trips').append(
+      tripsData.map(trip => {
+        $('.trips').append(
        `<div class='vacation-card'>
        <h1>Destination:${trip.destination}</h1>
-       <button id='${trip.id}'class='card-image'>
+       <button id='${trip.id} image-button'class='card-image'>
        <image class='destination-image' src='${trip.image}' alt='click to view recipe for ${trip.alt}'>
        </button>
        <p>Estimated Cost Per Day: $${trip.estimatedLodgingCostPerDay}.00</p>
@@ -71,7 +69,26 @@ export const domUpdates = {
        </div>
        ` )
    })
- }
+ },
+
+ displaySingleTripInfo(trip) {
+     $('.trip-info').append(
+    `<div class='view-vacation-card'>
+    <h1>Destination:${trip.destination}</h1>
+    <button id='${trip.id} image-button'class='card-image'>
+    <image class='destination-image' src='${trip.image}' alt='click to view recipe for ${trip.alt}'>
+    </button>
+    <p>Estimated Cost Per Day: $${trip.estimatedLodgingCostPerDay}.00</p>
+    <p>Estimated Flight Cost Per Person: $${trip.estimatedFlightCostPerPerson}.00</p>
+    </div>
+    ` )
+},
+
+totalCostDisplay(totalAmount) {
+  $('.agency-fee').text(`Travel Total: $${totalAmount}.00`);
+  // $('.travel-fee').text(`Agency Fee: ${agentFee}.00`);
+}
+
 }
 
 export default domUpdates;

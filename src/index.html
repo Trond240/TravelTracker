@@ -28,6 +28,24 @@
           <p class='users-total-display'></P>
         </div>
     <section class='user-options'>
+      <form class='new-trip-form hidden'>
+        <h1>Book A New Trip</h1>
+        <h1>Search for a Destination</h1>
+        <input class='search-for-trip' value='Lima, Peru' type ='search'></input>
+        <button class='destination-search-button'>search</button><br>
+        <label class="datepicker-label" for="user-date">Select Date:</label>
+        <input type="date" id="user-date">
+        <p>Duration(number of days)</p>
+        <input class='duration' value= '3' type ='number'></input>
+        <p>Number of Travelers</p>
+        <input class='number-of-travelers' value= '8' type ='number'></input>
+        <button id='confirm'>Confirm Booking</button>
+        <p class='travel-total'></p>
+        <p class='agencey-fee'></p>
+        <button id='bookMe'>Book Me!</button>
+        <div class='trip-info'>
+        </div>
+      </form>
       <div class='past-and-present hidden'>
       </div>
       <div class='trips hidden'>

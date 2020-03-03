@@ -39,7 +39,7 @@ describe ('Travel Agent Methods', () => {
     expect(travelAgent.searchUserByNameHelper("Tiffy Grout").length).to.equal(1);
   })
 
-  it.only('should be able to see a users trips inforamtion', () => {
+  it('should be able to see a users trips inforamtion', () => {
     expect(travelAgent.getUserTripInformation("Rachael Vaughten").length).to.equal(1);
   })
 

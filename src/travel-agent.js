@@ -58,6 +58,14 @@ class TravelAgent extends TravelInfo {
       return counter
     }, 0)
   }
+
+  approveRequest() {
+
+  }
+
+  denyRequest() {
+    
+  }
 }
 
 export default TravelAgent;
