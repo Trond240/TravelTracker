@@ -9,7 +9,6 @@ class Travelers extends TravelInfo {
 
   searchDistinationByName(destinationName) {
     let foundDestination = this.destinationsData.find(destination => {
-      console.log(destination.destination, destinationName)
       return destination.destination === destinationName;
     })
 
@@ -41,6 +40,10 @@ class Travelers extends TravelInfo {
   //     return counter
   //   }), 0
   // }
+
+  findTrip(trip) {
+    
+  }
 
   bookNewTrip(id, userID, destinationID, travelers, date, duration, status, suggestedActivities) {
     fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/trips/trips', {

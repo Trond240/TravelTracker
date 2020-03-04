@@ -59,12 +59,41 @@ class TravelAgent extends TravelInfo {
     }, 0)
   }
 
-  approveRequest() {
+  approveRequest(tripID, tripStatus) {
 
-  }
+    fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/trips/updateTrip', {
+      method: 'POST',
+      headers: {
+      "Content-Type": "application/json"
+    },
 
-  denyRequest() {
-    
+      body: JSON.stringify({
+        id: 92829,
+        status: "approved"
+      })
+
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(err => console.log('error, someting went wrong'))
+    })
+}
+
+
+  denleteTrip(destinationID) {
+    fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/trips/trips', {
+      method: 'POST',
+      headers: {
+      "Content-Type": "application/json"
+    },
+
+      body: JSON.stringify({
+         id: 92829
+      })
+
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(err => console.log('error, someting went wrong'))
+    })
   }
 }
 

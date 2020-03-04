@@ -108,11 +108,14 @@ const searchDestinationHandler = (event) => {
 const bookTripHandler = (event) => {
   event.preventDefault();
   let foundTrip = travelers.searchDistinationByName(searchDestinationValue.val())
-  let newId = 300025;
+  let newId = Math.floor(Math.random() * 30000);
+  // let date = $('.datepicker-label').val();
   let numberOfDays = $('.duration').val();
+  let daysAsNumber = parseInt(numberOfDays)
   let numberOfTravelers = $('.number-of-travelers').val();
-
-  travelers.bookNewTrip(newId, travelers.travelersData, foundTrip.id, numberOfDays, today, numberOfTravelers, 'pending', [])
+  let travelDaysAsNumber = parseInt(numberOfTravelers);
+  
+  travelers.bookNewTrip(newId, travelers.travelersData, foundTrip.id, daysAsNumber, today, travelDaysAsNumber, 'pending', [])
 }
 
 const totalHandler = (event) => {
