@@ -30,8 +30,9 @@ export const domUpdates = {
 
  displayUserTripInfo(foundInfo) {
    foundInfo.map(trip => {
+     console.log(event)
      $('.user-pending-trips').append(
-       `<div class='users-trips'>
+       `<div id='${trip.tripID}' class='users-trips'>
          <p>User: ${trip.name}</p>
          <p>Trip Date: ${trip.tripDate}</p>
          <p>Trip Status: ${trip.status}</p>
