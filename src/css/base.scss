@@ -170,3 +170,27 @@ body {
 .hidden {
   display:none;
 }
+
+//Mobile
+
+@media only screen and (max-width: 600px) {
+  .user-input, .login-button {
+    width: 160px;
+  }
+
+  .user-options {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .new-trip-form, .past-and-present, .trips, .user-pending-trips, .manager-trips{
+    margin-left: 6px;
+    margin-top: 4px;
+    width: 90%;
+  }
+
+  .manager-options {
+    display: flex;
+    flex-direction: column;
+  }
+}

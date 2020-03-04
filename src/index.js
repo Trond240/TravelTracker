@@ -4,7 +4,6 @@ import {domUpdates} from '../src/domUpdates.js'
 import TravelInfo from '../src/travel-info.js';
 import TravelAgent from '../src/travel-agent';
 import Travelers from '../src/travelers';
-// let moment = require('momnet');
 
 let travelInfo;
 let travelers;
@@ -95,7 +94,6 @@ const travelAgentHandler = () => {
 }
 
 const searchUserHandler = (event) => {
-  console.log(event.path)
   domUpdates.displayUserTripInfo(travelAgent.getUserTripInformation(searchValue.val()));
 }
 
@@ -107,13 +105,13 @@ const searchDestinationHandler = (event) => {
 const totalHandler = (event) => {
   event.preventDefault();
   domUpdates.totalCostDisplay(travelers.getUsersTotatlSpent(travelInfo.tripsData[22]), travelers.getAgencyFee(travelInfo.tripsData[22]))
+  // $(event.target.id).remove();
 }
 
 const bookTripHandler = (event) => {
   event.preventDefault();
   let foundTrip = travelers.searchDistinationByName(searchDestinationValue.val())
   let newId = Math.floor(Math.random() * 30000);
-  // let date = $('.datepicker-label').val();
   let numberOfDays = $('.duration').val();
   let daysAsNumber = parseInt(numberOfDays)
   let numberOfTravelers = $('.number-of-travelers').val();
@@ -123,17 +121,12 @@ const bookTripHandler = (event) => {
 }
 
 const approveTripHandler = (event) => {
-  console.log('made-it')
   event.preventDefault()
-  // let approvePath = event.path[3].children[0].lastElementChild.firstElementChild.firstElementChild.lastElementChild
   travelAgent.approveRequest(event.target.id, 'approve');
 }
 
 const deleteTripHandler = (event) => {
-  console.log('click')
   event.preventDefault()
-  // let deletePath = event.path[3].children[0].lastElementChild.firstElementChild.firstElementChild.lastElementChild
-
   travelAgent.deleteTrip(event.target.id);
 }
 
@@ -152,7 +145,6 @@ const displayError = () => {
 }
 
 $('body').click(clickHandler);
-// $('.user-pending-trips').click(deleteTripHandler);
 $('#confirm').click(totalHandler);
 $('#bookMe').click(bookTripHandler);
 $('.destination-search-button').click(searchDestinationHandler)
