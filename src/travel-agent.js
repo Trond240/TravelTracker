@@ -10,7 +10,7 @@ class TravelAgent extends TravelInfo {
     let foundUser = this.travelersData.find(user => {
       return user.name === name;
     })
-    return foundUser
+    return foundUser;
   }
 
   getUserTripInformation(name) {
