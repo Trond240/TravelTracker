@@ -124,13 +124,17 @@ const bookTripHandler = (event) => {
 const approveTripHandler = (event) => {
   console.log('click')
   event.preventDefault()
-  // travelAgent.approveRequest(event.target)
+  // if(event.target === `${trip.tripID}`) {
+  //   console.log(trip.tripID)
+  // }
+  travelAgent.approveRequest(event.target)
 }
 
 const deleteTripHandler = (event) => {
+
   console.log('click')
   event.preventDefault()
-  // travelAgent.denleteTrip(event.target)
+  travelAgent.denleteTrip(event.target)
 }
 
 
@@ -138,8 +142,8 @@ const displayError = () => {
   $('.error-message').remove('.hidden')
 }
 
-$('.approve').click(approveTripHandler)
-$('.delete').click(deleteTripHandler)
+// $('.user-pending-trips').click(approveTripHandler)
+// $('.user-pending-trips').click(deleteTripHandler)
 $('#confirm').click(totalHandler);
 $('#bookMe').click(bookTripHandler);
 $('.destination-search-button').click(searchDestinationHandler)

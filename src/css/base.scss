@@ -4,6 +4,7 @@ $primary-font: 'Trade Winds';
 $primary-color: #0B0C10;
 $second-color: #1F2833;
 $third-color: #66FCF1;
+$main-border: 5px solid $primary-color;
 
 //BodyStyling
 body {
@@ -27,6 +28,8 @@ body {
   justify-content: center;
   border-radius: 4px;
 }
+
+//login
 
 .traveler-login {
   margin-top: 100px;
@@ -62,7 +65,7 @@ body {
   display: flex;
   justify-content: center;
 }
-
+//User page
 .all-trips, .user-pending-trips, .users-trips {
   margin-top: 10px;
   margin-left: 5%;
@@ -80,6 +83,7 @@ body {
   border: 5px solid $third-color;
 }
 
+//manger Page
 .manager-trips {
   width: 75%;
   display: flex;
