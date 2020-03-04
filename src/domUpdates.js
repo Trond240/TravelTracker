@@ -46,9 +46,7 @@ export const domUpdates = {
      $('.manager-trips').append(
        `<div class='vacation-card'>
        <h1>Destination:${trip.destination}</h1>
-       <button id='${trip.id}'class='card-image'>
        <image class='destination-image' src='${trip.image}' alt='click to view recipe for ${trip.alt}'>
-       </button>
        <p>Estimated Cost Per Day: $${trip.estimatedLodgingCostPerDay}.00</p>
        <p>Estimated Flight Cost Per Person: $${trip.estimatedFlightCostPerPerson}.00</p>
        </div>
@@ -61,9 +59,7 @@ export const domUpdates = {
         $('.trips').append(
        `<div class='vacation-card'>
        <h1>Destination:${trip.destination}</h1>
-       <button id='${trip.id} image-button'class='card-image'>
        <image class='destination-image' src='${trip.image}' alt='click to view recipe for ${trip.alt}'>
-       </button>
        <p>Estimated Cost Per Day: $${trip.estimatedLodgingCostPerDay}.00</p>
        <p>Estimated Flight Cost Per Person: $${trip.estimatedFlightCostPerPerson}.00</p>
        </div>
@@ -75,9 +71,7 @@ export const domUpdates = {
      $('.trip-info').append(
     `<div class='view-vacation-card'>
     <h1>Destination:${trip.destination}</h1>
-    <button id='${trip.id} image-button'class='card-image'>
     <image class='destination-image' src='${trip.image}' alt='click to view recipe for ${trip.alt}'>
-    </button>
     <p>Estimated Cost Per Day: $${trip.estimatedLodgingCostPerDay}.00</p>
     <p>Estimated Flight Cost Per Person: $${trip.estimatedFlightCostPerPerson}.00</p>
     </div>

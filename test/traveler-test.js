@@ -50,8 +50,8 @@ describe.only('default properties', () => {
     expect(traveler.getUsersTotatlSpent(userID)).to.equal(25739);
   })
 
-  it.only('should be able to get Agency Fee', () => {
-    expect(traveler.getAngencyFee(traveler.destinationsData[1].id)).to.equal();
+  it.only('should be able to get trip total', () => {
+    expect(traveler.getTripTotal(traveler.destinationsData[1].id)).to.deep.equal({ tripTotal: 880 });
   })
 
   it('should be able to search for a destination by name', () => {
