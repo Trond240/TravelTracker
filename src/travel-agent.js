@@ -36,7 +36,6 @@ class TravelAgent extends TravelInfo {
 
   retrievePendingTrips() {
     return this.tripsData.filter(trip => {
-      console.log(trip)
       return trip.status === 'pending';
     })
   }
@@ -44,7 +43,7 @@ class TravelAgent extends TravelInfo {
   totalRevenueThisYear() {
     //need to pass in a date
     let totalCount = this.getAllUserTotalSpent();
-    return totalCount * .01
+    return totalCount * .10
   }
 
   getAllUserTotalSpent() {
@@ -59,7 +58,7 @@ class TravelAgent extends TravelInfo {
     }, 0)
   }
 
-  approveRequest(tripID, tripStatus) {
+  approveRequest(tripID) {
 
     fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/trips/updateTrip', {
       method: 'POST',

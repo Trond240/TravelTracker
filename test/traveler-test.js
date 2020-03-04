@@ -50,12 +50,30 @@ describe.only('default properties', () => {
     expect(traveler.getUsersTotatlSpent(userID)).to.equal(25739);
   })
 
-  it.only('should be able to get trip total', () => {
-    expect(traveler.getTripTotal(traveler.destinationsData[1].id)).to.deep.equal({ tripTotal: 880 });
+  it('should be able to get trip total', () => {
+    expect(traveler.getSingleTripTotal(traveler.tripsData[0])).to.equal(1370);
+  })
+
+  it('should be able to calculate agency fee', () => {
+    expect(traveler.getAgencyFee(traveler.tripsData[0])).to.equal(137);
+  })
+
+
+  it('should be able to find a single trip', () => {
+    expect(traveler.findTripInfo(traveler.tripsData[0])).to.deep.equal({
+      id: 1,
+      userID: 44,
+      destinationID: 49,
+      travelers: 1,
+      date: '2019/09/16',
+      duration: 8,
+      status: 'approved',
+      suggestedActivities: []
+    })
   })
 
   it('should be able to search for a destination by name', () => {
-    expect(traveler.searchDistinationByName('Lima, Peru')).to.equal({
+    expect(traveler.searchDistinationByName('Lima, Peru')).to.deep.equal({
     id: 1,
     destination: 'Lima, Peru',
     estimatedLodgingCostPerDay: 70,

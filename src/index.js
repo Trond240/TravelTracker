@@ -4,7 +4,7 @@ import {domUpdates} from '../src/domUpdates.js'
 import TravelInfo from '../src/travel-info.js';
 import TravelAgent from '../src/travel-agent';
 import Travelers from '../src/travelers';
-
+// let moment = require('momnet');
 
 let travelInfo;
 let travelers;
@@ -20,10 +20,8 @@ let dd = String(today.getDate()).padStart(2, '0');
 let mm = String(today.getMonth() + 1).padStart(2, '0');
 let yyyy = today.getFullYear();
 
-
 today = yyyy + '/' + mm + '/' + dd;
 document.write(today);
-
 
 const travelerData = fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/travelers/travelers')
   .then(travelersResponse => travelersResponse.json())
@@ -92,7 +90,7 @@ const travelAgentHandler = () => {
   $('.manager-trips').removeClass('hidden');
   $('.manager-page').removeClass('hidden');
   $('.agent-display').removeClass('hidden');
-  domUpdates.displayManagerInfo(travelAgent.totalUsersOnTripsToday("2020/10/04"), travelAgent.totalRevenueThisYear());
+  domUpdates.displayManagerInfo(travelAgent.totalUsersOnTripsToday(today), travelAgent.totalRevenueThisYear());
   domUpdates.displayManagerTrips(travelInfo.destinationsData);
 }
 
@@ -105,6 +103,11 @@ const searchDestinationHandler = (event) => {
   domUpdates.displaySingleTripInfo(travelers.searchDistinationByName(searchDestinationValue.val()))
 }
 
+const totalHandler = (event) => {
+  event.preventDefault();
+  domUpdates.totalCostDisplay(travelers.getUsersTotatlSpent(travelInfo.tripsData[22]), travelers.getAgencyFee(travelInfo.tripsData[22]))
+}
+
 const bookTripHandler = (event) => {
   event.preventDefault();
   let foundTrip = travelers.searchDistinationByName(searchDestinationValue.val())
@@ -114,20 +117,29 @@ const bookTripHandler = (event) => {
   let daysAsNumber = parseInt(numberOfDays)
   let numberOfTravelers = $('.number-of-travelers').val();
   let travelDaysAsNumber = parseInt(numberOfTravelers);
-  
+
   travelers.bookNewTrip(newId, travelers.travelersData, foundTrip.id, daysAsNumber, today, travelDaysAsNumber, 'pending', [])
 }
 
-const totalHandler = (event) => {
-  event.preventDefault();
-  console.log('made-it')
-  domUpdates.totalCostDisplay(trevelers.getUsersTotatlSpent(travelers.travelersData))
+const approveTripHandler = (event) => {
+  console.log('click')
+  event.preventDefault()
+  // travelAgent.approveRequest(event.target)
 }
+
+const deleteTripHandler = (event) => {
+  console.log('click')
+  event.preventDefault()
+  // travelAgent.denleteTrip(event.target)
+}
+
 
 const displayError = () => {
   $('.error-message').remove('.hidden')
 }
 
+$('.approve').click(approveTripHandler)
+$('.delete').click(deleteTripHandler)
 $('#confirm').click(totalHandler);
 $('#bookMe').click(bookTripHandler);
 $('.destination-search-button').click(searchDestinationHandler)

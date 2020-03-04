@@ -55,8 +55,8 @@ describe ('Travel Agent Methods', () => {
     expect(travelAgent.getAllUserTotalSpent()).to.equal(1135278);
   })
 
-  it('should calculate 10% of the total spent this year', () => {
-    expect(travelAgent.totalRevenueThisYear()).to.equal(11352.78);
+  it.only('should calculate 10% of the total spent this year', () => {
+    expect(travelAgent.totalRevenueThisYear()).to.equal(113527.8);
   })
 
 })

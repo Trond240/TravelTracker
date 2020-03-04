@@ -7,10 +7,10 @@ export const domUpdates = {
    $('.users-total-display').text(`Total Amount Spent: $${totalAmount}.00`)
  },
 
- displayManagerInfo(tripsData, numberOnTrips, totalAmount) {
+ displayManagerInfo(numberOnTrips, totalAmount) {
    $('.agent-name-display').text(`Welcome back: Trond Makonese!`)
-   $('.all-total-display').text(`Total Revenue This Year: $${numberOnTrips}`)
-   $('.users-on-trips-today').text(`Number of Travelers on Trips Today: ${totalAmount}`)
+   $('.all-total-display').text(`Total Revenue This Year: $${totalAmount}`)
+   $('.users-on-trips-today').text(`Number of Travelers on Trips Today: ${numberOnTrips}`)
  },
 
  displayUsersPastAndPresent(travelHistory) {
@@ -22,6 +22,7 @@ export const domUpdates = {
          <p>Estimated Cost For Lodge: $${trip.costPerPersonADay}.00</p>
          <p>Number of Travelers: ${trip.numberOfTravelers}</p>
          <p>Date: ${trip.date}</p>
+         <p>Status: ${trip.status}</p>
        </div>
        `)
    })
@@ -34,8 +35,8 @@ export const domUpdates = {
          <p>User: ${trip.name}</p>
          <p>Trip Date: ${trip.tripDate}</p>
          <p>Trip Status: ${trip.status}</p>
-         <button id='${trip.tripID}'>Approve Trip</button>
-         <button id='${trip.tripID}'>Denny Trip</button>
+         <button class='approve' id='${trip.tripID}'>Approve Trip</button>
+         <button class='delete' id='${trip.tripID}'>Delete Trip</button>
        </div>
        `)
    })
@@ -78,9 +79,10 @@ export const domUpdates = {
     ` )
 },
 
-totalCostDisplay(totalAmount) {
+totalCostDisplay(totalAmount, agencyFee) {
+  console.log(totalAmount, agencyFee);
   $('.agency-fee').text(`Travel Total: $${totalAmount}.00`);
-  // $('.travel-fee').text(`Agency Fee: ${agentFee}.00`);
+  $('.travel-fee').text(`Agency Fee: ${agencyFee}.00`);
 }
 
 }

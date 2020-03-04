@@ -5,6 +5,7 @@ $primary-color: #0B0C10;
 $second-color: #1F2833;
 $third-color: #66FCF1;
 
+//BodyStyling
 body {
   background-color: $primary-background;
   font-family: 'Trade Winds';
@@ -113,8 +114,9 @@ body {
 }
 
 .new-trip-form {
+  color:grey;
   width: 20%;
-  background-color: $third-color;
+  background-color: $second-color;
 }
 
 .destination-image {
@@ -150,6 +152,14 @@ body {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
+}
+
+.form-input, button {
+  margin-top: 15px;
+  font-size: 1em;
+  border: 3px solid $third-color;
+  radius: 4px;
+
 }
 
 .hidden {
