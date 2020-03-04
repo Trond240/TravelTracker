@@ -27,22 +27,32 @@ class Travelers extends TravelInfo {
     return totalSpent;
   }
 
-  // getAngencyFee(tripID) {
-  //   // let foundTrip = searchDistinationByName(destinationName);
-  //
-  //    return this.destinationsData.reduce((counter, destination) => {
-  //      console.log(destination.id, tripID)
-  //     if(destination.id === tripID) {
-  //       console.log('made-it')
-  //     counter += destination.flightPerPerson * trips.numberOfTravelers;
-  //     counter += destination.costPerPersonADay * trips.duration;
-  //     }
-  //     return counter
-  //   }), 0
-  // }
+  getAgencyFee(newTrip) {
+    let foundTripTotal = this.getSingleTripTotal(newTrip);
 
-  findTrip(trip) {
-    
+    return (foundTripTotal * .10);
+  }
+
+  getSingleTripTotal(newTrip) {
+    let foundTrip = this.findTripInfo(newTrip);
+
+    let tripTotal = this.destinationsData.reduce((math, destination) => {
+      if(foundTrip.destinationID === destination.id) {
+        console.log(destination)
+          math += destination.estimatedLodgingCostPerDay * foundTrip.travelers;
+          math += destination.estimatedFlightCostPerPerson * foundTrip.duration;
+      }
+      return math
+    }, 0)
+    return tripTotal;
+  }
+
+  findTripInfo(newTrip) {
+    let foundTrip = this.tripsData.find(trip => {
+      return trip.id === newTrip.id
+    })
+
+    return foundTrip;
   }
 
   bookNewTrip(id, userID, destinationID, travelers, date, duration, status, suggestedActivities) {
