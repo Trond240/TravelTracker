@@ -95,6 +95,7 @@ const travelAgentHandler = () => {
 }
 
 const searchUserHandler = (event) => {
+  console.log(event.path)
   domUpdates.displayUserTripInfo(travelAgent.getUserTripInformation(searchValue.val()));
 }
 
@@ -122,19 +123,27 @@ const bookTripHandler = (event) => {
 }
 
 const approveTripHandler = (event) => {
-  console.log('click')
+  console.log('made-it')
   event.preventDefault()
-  // if(event.target === `${trip.tripID}`) {
-  //   console.log(trip.tripID)
-  // }
-  travelAgent.approveRequest(event.target)
+  // let approvePath = event.path[3].children[0].lastElementChild.firstElementChild.firstElementChild.lastElementChild
+  travelAgent.approveRequest(event.target.id, 'approve');
 }
 
 const deleteTripHandler = (event) => {
-
   console.log('click')
   event.preventDefault()
-  travelAgent.denleteTrip(event.target)
+  // let deletePath = event.path[3].children[0].lastElementChild.firstElementChild.firstElementChild.lastElementChild
+
+  travelAgent.deleteTrip(event.target.id);
+}
+
+const clickHandler = (event) => {
+  if(event.target.classList.contains('approve')){
+    approveTripHandler(event)
+  }
+  if(event.target.classList.contains('delete')) {
+    deleteTripHandler(event)
+  }
 }
 
 
@@ -142,8 +151,8 @@ const displayError = () => {
   $('.error-message').remove('.hidden')
 }
 
-// $('.user-pending-trips').click(approveTripHandler)
-// $('.user-pending-trips').click(deleteTripHandler)
+$('body').click(clickHandler);
+// $('.user-pending-trips').click(deleteTripHandler);
 $('#confirm').click(totalHandler);
 $('#bookMe').click(bookTripHandler);
 $('.destination-search-button').click(searchDestinationHandler)

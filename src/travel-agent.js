@@ -58,42 +58,62 @@ class TravelAgent extends TravelInfo {
     }, 0)
   }
 
-  approveRequest(tripID) {
+  approveRequest(tripID, status) {
 
-    fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/trips/updateTrip', {
-      method: 'POST',
-      headers: {
-      "Content-Type": "application/json"
-    },
+      fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/trips/updateTrip', {
+        method: 'POST',
+        headers: {
+        "Content-Type": "application/json"
+      },
 
-      body: JSON.stringify({
-        id: 92829,
-        status: "approved"
-      })
-
+        body: JSON.stringify({
+        id: tripID,
+        status: status}),
+  })
       .then(response => response.json())
       .then(data => console.log(data))
       .catch(err => console.log('error, someting went wrong'))
-    })
-}
-
-
-  denleteTrip(destinationID) {
-    fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/trips/trips', {
-      method: 'POST',
-      headers: {
-      "Content-Type": "application/json"
-    },
-
-      body: JSON.stringify({
-         id: 92829
-      })
-
-      .then(response => response.json())
-      .then(data => console.log(data))
-      .catch(err => console.log('error, someting went wrong'))
-    })
   }
+
+  deleteTrip(tripID) {
+
+      fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/trips/updateTrip', {
+        method: 'POST',
+        headers: {
+        "Content-Type": "application/json"
+      },
+
+        body: JSON.stringify({
+        id: tripID}),
+  })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(err => console.log('error, someting went wrong'))
+  }
+
+
+
+
+
+
+
+
+//   denleteTrip(destinationID) {
+//     fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/trips/trips', {
+//       method: 'POST',
+//       headers: {
+//       "Content-Type": "application/json"
+//     },
+//
+//       body: JSON.stringify({
+//          id: destinationID
+//       })
+//
+//       .then(response => response.json())
+//       .then(data => console.log(data))
+//       .catch(err => console.log('error, someting went wrong'))
+//     })
+//   }
 }
 
 export default TravelAgent;
